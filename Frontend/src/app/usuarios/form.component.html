@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row" style="padding-top: 30px;">
+        <div class="col-8">
+            <div class="card bg-dark text-white">
+                <div class=" card-header">{{titulo}}</div>
+                <div class="card-body">
+
+                    <form>
+                        <!-- <div class="form-group row" style="padding-top: 20px;">
+                            <label for=" Id_Usuario " class="col-form-label col-sm-3">Id_Usuario</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" [(ngModel)]="usuario.id_usuario" name="nombre">
+                            </div>
+                        </div> -->
+                        <div class="form-group row" style="padding-top: 20px;">
+                            <label for=" Nombre " class="col-form-label col-sm-3">Nombre</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" [(ngModel)]="usuario.nombre" name="nombre">
+                            </div>
+                        </div>
+                        <div class="form-group row" style="padding-top: 20px;">
+                            <label for="Activo" class="col-form-label col-sm-3">Activo</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" [(ngModel)]="usuario.activo" name="activo">
+                            </div>
+                        </div>
+                        <div class="form-group row" style="padding-top: 20px;">
+                            <label for="Activo" class="col-form-label col-sm-3">Rol</label>
+                            <div class="col-sm-6">
+                                <select class="form-select">
+                                    <option selected>Seleccionar Rol</option>
+                                    <option value="ADMINISTRADOR" (click)="setRole('ADMINISTRADOR', 1)">ADMINISTRADOR</option>
+                                    <option value="AUDITOR" (click)="setRole('AUDITOR', 2)">AUDITOR</option>
+                                    <option value="AUXILIAR"(click)="setRole('AUXILIAR', 3)">AUXILIAR</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <button class="btn btn-primary" role="button" (click)='create()'
+                                  > Crear </button>
+                                <ng-template #elseBlock><button class="btn btn-primary" role="button"
+                                        (click)='update()'> Editar </button>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

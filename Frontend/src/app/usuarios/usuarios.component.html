@@ -1,0 +1,121 @@
+<div class="container">
+    <div class="row" style="padding-top: 20px;">
+        <div class="col-12">
+            <div class="card border-primary mb-3">
+                <div class="card-header">Usuarios</div>
+                <div class="card-body text-primary">
+                    <h5 class="card-title">Listado Usuarios</h5>
+
+
+                    <div class="my-2 text-left">
+                        <button class="btn btn-rounded btn-primary" [routerLink]="['/usuario/form']">
+                            Crear Usuario
+                        </button>
+                    </div>
+
+                    <div *ngIf="usuarios.length > 0">
+                        <table class="table table-bordered table-striped text-center">
+                            <thead>
+                                <tr>
+                                    <th>id_usuario</th>
+                                    <th> Nombre </th>
+                                    <th> Activo </th>
+                                    <th> Role </th>
+                                    <th>
+                                        Editar
+                                    </th>
+                                    <th>
+                                        Eliminar
+                                    </th>
+                                </tr>
+
+
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let usuario of usuarios">
+                                    <td>{{usuario.id_usuario}}</td>
+                                    <td>{{usuario.nombre}}</td>
+                                    <td>{{usuario.activo}}</td>
+                                    <td>{{usuario.rol.nombre}}</td>
+                                    <td>
+                                        <button type="button" name="button"
+                                            [routerLink]="['/usuario/form', usuario.id_usuario]"
+                                            class="btn btn-primary">
+                                            Editar
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button type="button" name="button" (click)="delete(usuario)"
+                                            class="btn btn-danger">
+                                            Eliminar
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <form>
+            <div class="row" style="padding-top: 30px; padding-bottom: 30px;">
+                <div class="col-12">
+                    <div class="card border-info">
+                        <div class="card-body">
+
+                            <div class="form-group row" style="padding-top: 20px;">
+                                <label for=" Nombre " class="col-form-label col-sm-3">Nombre de usuario a buscar</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" [(ngModel)]="nombreDeUsuario" name="nombre">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row" style="padding-top: 20px; padding-bottom: 20px;">
+                            <div class="col-6 text-center">
+                                <button class="btn btn-primary" (click)="findUserByName()"> Buscar usuario </button>
+                            </div>
+
+                            <div class="col-6 text-center">
+                                <input class="btn btn-outline-primary" type="reset" value="Limpiar">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="usuarioEncontrado">
+                    <div *ngIf="usuarioEncontrado.nombre.length > 0">
+                        <div class="row text-center" style="padding-top: 30px; padding-bottom: 30px;">
+                            <div class="col-12">
+                                <div class="card border-info">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Usuario encontrado </h5>
+                                        <p class="card-text">Id de usuario : {{usuarioEncontrado.id_usuario}}</p>
+                                        <p class="card-text">Nombre : {{usuarioEncontrado.nombre}}</p>
+                                        <p class="card-text">Activo : {{usuarioEncontrado.activo}}</p>
+                                        <p class="card-text">Rol : {{usuarioEncontrado.rol.nombre}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="!usuarioEncontrado">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <div class="card border-info">
+                                <div class="card-body">
+                                    <h4>Usuario no encontrado</h4>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
